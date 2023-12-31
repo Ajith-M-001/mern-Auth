@@ -12,7 +12,18 @@ import cors from 'cors'
 const app = express();
 const PORT = process.env.PORT || 6000;
 
-app.use(cors())
+// Define multiple options for CORS
+const corsOptions = {
+  origin: ['https://example.com', 'https://another-domain.com'], // Array of allowed origins
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed HTTP methods
+  allowedHeaders: 'Content-Type,Authorization', // Allowed headers
+  credentials: true, // Allow cookies and credentials
+  preflightContinue: false, // Pass the CORS preflight response to the next handler
+  optionsSuccessStatus: 204 // Set the response status for preflight requests
+};
+
+// Enable CORS with options
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
