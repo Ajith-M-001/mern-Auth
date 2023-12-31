@@ -4,6 +4,7 @@ import connectDB from "./database/db.js";
 import userRouter from "./Router/userRouter.js";
 import { errorHandler, notFound } from "./middleWare/errorHandler.js";
 import cookieParser from "cookie-parser";
+import cors from 'cors'
 
 // import dotenv from "dotenv";
 // dotenv.config();
@@ -11,6 +12,7 @@ import cookieParser from "cookie-parser";
 const app = express();
 const PORT = process.env.PORT || 6000;
 
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
