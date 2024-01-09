@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { FaRegUser, FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { TfiEmail } from "react-icons/tfi";
@@ -92,9 +91,7 @@ const UpdateUser = () => {
         }).unwrap();
         dispatch(setCredentials(response));
         toast.success("user Updated Successfully");
-        setTimeout(() => {
-          navigate("/profile");
-        }, 6000);
+        navigate("/profile");
         setFormData({
           name: "",
           email: "",
@@ -211,7 +208,5 @@ const UpdateUser = () => {
     </div>
   );
 };
-
-
 
 export default UpdateUser;
